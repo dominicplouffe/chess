@@ -83,6 +83,24 @@ func (pos *Position) Update(m *Move) *Position {
 	}
 }
 
+// NullMove is a method that performs a non move
+func (pos *Position) NullMove() *Position {
+
+	turn := pos.turn.Other()
+	cr := pos.CastleRights()
+
+	b := pos.board.copy()
+	return &Position{
+		board:           b,
+		turn:            turn,
+		castleRights:    cr,
+		enPassantSquare: NoSquare,
+		halfMoveClock:   0,
+		moveCount:       pos.moveCount,
+		inCheck:         false,
+	}
+}
+
 // ValidMoves returns a list of valid moves for the position.
 func (pos *Position) ValidMoves() []*Move {
 	if pos.validMoves != nil {
