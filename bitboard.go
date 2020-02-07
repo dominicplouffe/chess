@@ -59,3 +59,8 @@ func (b bitboard) Draw() string {
 	}
 	return s
 }
+
+//Get returns the uint64 version of the bitboard
+func (b bitboard) Get() uint64 {
+	return uint64(b)
+}

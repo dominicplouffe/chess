@@ -240,6 +240,27 @@ func (b *Board) calcConvienceBBs(m *Move) {
 	}
 }
 
+//Bitboards will give you back all the bitboards used in the chess envivonment
+//starging with the white king, queen, rook, bishop, knight, pawn
+func (b *Board) Bitboards() []uint64 {
+	boards := []uint64{
+		b.bbWhiteKing.Get(),
+		b.bbWhiteQueen.Get(),
+		b.bbWhiteRook.Get(),
+		b.bbWhiteBishop.Get(),
+		b.bbWhiteKnight.Get(),
+		b.bbWhitePawn.Get(),
+		b.bbBlackKing.Get(),
+		b.bbBlackQueen.Get(),
+		b.bbBlackRook.Get(),
+		b.bbBlackBishop.Get(),
+		b.bbBlackKnight.Get(),
+		b.bbBlackPawn.Get(),
+	}
+
+	return boards
+}
+
 func (b *Board) copy() *Board {
 	return &Board{
 		whiteSqs:      b.whiteSqs,
